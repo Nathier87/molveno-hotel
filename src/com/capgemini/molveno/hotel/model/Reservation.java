@@ -14,5 +14,17 @@ public class Reservation {
         LocalDateTime checkOut;
         LocalDateTime reservationDate;
 
+        //method
+        boolean reserveRoom () {
+            return true;
+        }
+        //another method
+        boolean serveToRoom() {
+            return  true;
+        }
+
+}
+
+
 
 
