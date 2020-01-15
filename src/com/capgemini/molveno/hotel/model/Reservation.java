@@ -16,6 +16,7 @@ public class Reservation {
 
         //method
         boolean reserveRoom () {
+          //      reservationDate
             return true;
         }
         //another method
