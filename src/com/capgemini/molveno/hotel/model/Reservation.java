@@ -4,11 +4,11 @@ import java.time.LocalDate;
 import java.time.ZonedDateTime;
 
 public class Reservation {
-   LocalDate entryDate;
-
-    public LocalDate getEntryDate() {
-        return entryDate;
-
-
+    public static void main(String[] args) {
+        LocalDate entryDate;
+        int room;
+        String name;
+        String emailAddress;
     }
-}
+
+
