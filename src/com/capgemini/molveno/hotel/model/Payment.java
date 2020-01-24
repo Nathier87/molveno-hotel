@@ -3,10 +3,8 @@ package com.capgemini.molveno.hotel.model;
 public class Payment {
 
     public static void main(String[] args) {
-        int person;
-        int result;
-      //  Payment d=new Payment();
-      //  System.out.println(d.Payment(2));
+        Payment d=new Payment();
+        System.out.println(d.Payment(2));
     }
     public int Payment(int person){
         int result=0;
