@@ -1,5 +1,5 @@
 package com.capgemini.molveno.hotel.model;
 
-public class Room {
+public class roomType {
 
 }
