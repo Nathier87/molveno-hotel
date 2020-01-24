@@ -4,6 +4,7 @@ public class info {
     public static void main(String[] args) {
 
     }
+    //coding
     int result= 0;
     public int room (int roomNumber) {
         switch (roomNumber) {
@@ -18,7 +19,8 @@ public class info {
             case 3:
                 int familyRoom;
                 room = familyRoom;
-
+            default:
+                result = -1;
 
         }
 

@@ -6,6 +6,7 @@ public class Guest {
     String Name;
     String LastName;
     String Email;
+
     byte NumGuest;
     LocalDateTime DateTime;
     int Tel;
