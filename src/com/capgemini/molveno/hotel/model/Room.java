@@ -4,47 +4,76 @@ import java.time.LocalDateTime;
 
 public class Room {
     final int MAX_NUM_OF_ROOMS = 200;
-    String roomType;
-    int roomNumber, maxBeds;
-    LocalDateTime checkInTime, checkOutTime;
-    boolean isReserved, isCleaned;
-    double price;
+    private String roomType;
+    private  int roomNumber, maxBeds;
+    private LocalDateTime checkInTime, checkOutTime;
+    private boolean reserved, available;
+    private double roomPrice;
 
-    public boolean cleanRoom(boolean isCleaned) {
-        this.isCleaned = true;
-        return isCleaned;
+    public String getRoomType() {
+        return roomType;
     }
 
-    public boolean reserveRoom(boolean isReserved, int roomNumber) {
-        this.isReserved = true;
+    public void setRoomType(String roomType) {
+        this.roomType = roomType;
+    }
+
+    public int getRoomNumber() {
+        return roomNumber;
+    }
+
+    public void setRoomNumber(int roomNumber) {
         this.roomNumber = roomNumber;
-        return isReserved;
     }
 
-    public double getPrice(String roomType) {
-        switch (roomType){
-            case "x":
-                price = 50;
-                break;
-            case "y":
-                price = 75;
-                break;
-            case "z":
-                price = 100;
-                break;
-            default:
-                price = 80;
-                break;
-        }
-        return price;
+    public int getMaxBeds() {
+        return maxBeds;
     }
 
-    public void checkIn(){
-
+    public void setMaxBeds(int maxBeds) {
+        this.maxBeds = maxBeds;
     }
 
-    public void checkOut(){
-
+    public LocalDateTime getCheckInTime() {
+        return checkInTime;
     }
+
+    public void setCheckInTime(LocalDateTime checkInTime) {
+        this.checkInTime = checkInTime;
+    }
+
+    public LocalDateTime getCheckOutTime() {
+        return checkOutTime;
+    }
+
+    public void setCheckOutTime(LocalDateTime checkOutTime) {
+        this.checkOutTime = checkOutTime;
+    }
+
+    public boolean getReserved() {
+        return reserved;
+    }
+
+    public void setReserved(boolean reserved) {
+        this.reserved = reserved;
+    }
+
+    public boolean getAvailable() {
+        return available;
+    }
+
+    public void setAvailable(boolean available) {
+        this.available = available;
+    }
+
+    public double getRoomPrice() {
+        return roomPrice;
+    }
+
+    public void setRoomPrice(double roomPrice) {
+        this.roomPrice = roomPrice;
+    }
+
+
 
 }
