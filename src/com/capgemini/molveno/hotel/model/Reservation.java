@@ -1,19 +1,37 @@
 package com.capgemini.molveno.hotel.model;
 
-import java.util.Scanner; // import the Scanner class
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 
-class MyClass {
+public class Reservation {
     public static void main(String[] args) {
-        Scanner myObj = new Scanner(System.in);
-        String userName;
+        Guest guest;
+        Room[] rooms;
+        LocalDateTime checkOutTime;
+        LocalDateTime checkInTime;
+        Payment[] payments;
 
-        // Enter username and press Enter
-        System.out.println("Enter username");
-        userName = myObj.nextLine();
 
-        System.out.println("Username is: " + userName);
     }
 }
+
+//        public int room (int roomNumber) {
+//            switch (roomNumber) {
+//                case 1:
+//                    int single;
+//                    room = single;
+//                    break;
+//                case 2:
+//                    int twin;
+//                    room = twin;
+//                    break;
+//                case 3:
+//                    int familyRoom;
+//                    room = familyRoom;
+//                    break;
+//
+
 
 
 
