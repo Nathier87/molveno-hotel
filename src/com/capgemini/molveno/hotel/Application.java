@@ -14,23 +14,41 @@ import java.util.*;
 public class Application {
 
     public static Scanner inputS = new Scanner(System.in);
+    public static Scanner inputB = new Scanner(System.in);
     private static Reservation reservation = new Reservation();
     public static Scanner input = new Scanner(System.in);
     private static List<Room> rooms = new ArrayList<>();
     private static List<Guest> guests = new ArrayList<>();
 
     public static void main(String[] args)  {
-        createAllRooms();
+//        createAllRooms();
 
         showMainMenu();
     }
 
 
     private  static  void showMainMenu() {
+            System.out.println("                   __          __    _                                 _______                              \n" +
+                    "                   \\ \\        / /   | |                               |__   __|                             \n" +
+                    "                    \\ \\  /\\  / /___ | |  ___  ___   _ __ ___    ___      | |  ___                           \n" +
+                    "                     \\ \\/  \\/ // _ \\| | / __|/ _ \\ | '_ ` _ \\  / _ \\     | | / _ \\                          \n" +
+                    "                      \\  /\\  /|  __/| || (__| (_) || | | | | ||  __/     | || (_) |                         \n" +
+                    "                       \\/  \\/  \\___||_| \\___|\\___/ |_| |_| |_| \\___|     |_| \\___/                          \n" +
+                    "  _    _         _         _    __  __         _                             _____                          \n" +
+                    " | |  | |       | |       | |  |  \\/  |       | |                           |  __ \\                         \n" +
+                    " | |__| |  ___  | |_  ___ | |  | \\  / |  ___  | |__   __ ___  _ __    ___   | |  | |  ___  _ __ ___    ___  \n" +
+                    " |  __  | / _ \\ | __|/ _ \\| |  | |\\/| | / _ \\ | |\\ \\ / // _ \\| '_ \\  / _ \\  | |  | | / _ \\| '_ ` _ \\  / _ \\ \n" +
+                    " | |  | || (_) || |_|  __/| |  | |  | || (_) || | \\ V /|  __/| | | || (_) | | |__| ||  __/| | | | | || (_) |\n" +
+                    " |_|  |_| \\___/  \\__|\\___||_|  |_|  |_| \\___/ |_|  \\_/  \\___||_| |_| \\___/  |_____/  \\___||_| |_| |_| \\___/ \n" +
+                    "                                                                                                            \n" +
+                    "                                                                                                            ");
             System.out.println("MAIN MENU FOR RESERVATION-HOTEL MOLVENO");
             System.out.println("1. Create a guest");
             System.out.println("2. Make a reservation for a room");
             System.out.println("3. Make a payment");
+            System.out.println("4. Show guest list");
+            System.out.println("5. Create a room");
+            System.out.println("6. Show room list");
 
             System.out.println("Choose your option number and press enter");
             int mainOption = input.nextInt();
@@ -38,84 +56,179 @@ public class Application {
             switch (mainOption) {
                 case 1: //create a guest
                     createGuest();
-                    System.out.println("press `m` to go to main menu or `enter` to leave the program");
-                    if(inputS.nextLine().equals("m"))
-                        showMainMenu();
+                    showMenu();
                     break;
                 case 2://make a reservation
                     makeReservation();
-                    System.out.println("press `m` to go to main menu or `enter` to leave the program");
-                    if(inputS.nextLine().equals("m"))
-                        showMainMenu();
+                    showMenu();
                     break;
                 case 3://make a payment
-                    //put here payment method
-                    System.out.println("press `m` to go to main menu or `enter` to leave the program");
-                    if(inputS.nextLine().equals("m"))
-                        showMainMenu();
+                    makePayment();
+                    showMenu();
+                    break;
+                case 4://show guest list
+                    showGuestList();
+                    showMenu();
+                    break;
+                case 5://create room
+                    createRoom();
+                    showMenu();
+                    break;
+                case 6://create room
+                    showRoom();
+                    showMenu();
                     break;
                 default:
-                    System.out.println("please select a valid option");
-                    showMainMenu();
+                    showMenu();
 
             }
     }
 
+    private static void showMenu() {
+        System.out.println("press `m` to go to main menu or `enter` to leave the program");
+        if (inputS.nextLine().equals("m")) {
+            showMainMenu();
+        }
+    }
+    private static void makePayment(){
+        System.out.println("under construction...");
+    }
+    private static void createRoom() {
+        Room room=new Room();
+        System.out.println("CREATE A ROOM");
+
+        System.out.println("1. Enter the room number: ");
+        int roomNumber= input.nextInt();
+        room.setRoomNumber(roomNumber);
+
+        System.out.println("2. Enter the room type: ");
+        String roomType= inputS.nextLine();
+        room.setRoomType(roomType);
+
+        System.out.println("3. Enter the room availability: ");
+        boolean roomAvailable= inputB.nextBoolean();
+        room.setAvailable(roomAvailable);
+
+        System.out.println("4. Enter the room max beds: ");
+        int bedNumber= input.nextInt();
+        room.setMaxBeds(bedNumber);
+
+
+        System.out.println("5. Enter the room price: ");
+        int roomPrice= input.nextInt();
+        room.setRoomPrice(roomPrice);
+
+        rooms.add(room);
+
+        System.out.println("Room number: "+ room.getRoomNumber());
+        System.out.println("Room type: "+ room.getRoomType());
+        System.out.println("Room availability: " + room.getAvailable());
+        System.out.println("Number of beds: "+ room.getMaxBeds());
+        System.out.println("Room price: "+  room.getRoomPrice());
+    }
+    private  static void showRoom(){
+        for (Room r: rooms) {
+            System.out.println("Room number: "+ r.getRoomNumber());
+            System.out.println("Room type: "+ r.getRoomType());
+            System.out.println("Room availability: " + r.getAvailable());
+            System.out.println("Number of beds: "+ r.getMaxBeds());
+            System.out.println("Room price: "+ r.getRoomPrice());
+        }
+    }
+
     private static void createGuest(){
-        System.out.println("MAKE A RESERVATION");
+        Guest guest=new Guest();
+
+        System.out.println("CREATE A GUEST");
 
         System.out.println("1. Enter the name of the guest: ");
         String guestName="guest";
         guestName = inputS.nextLine();
-        reservation.setGuest(new Guest(guestName));
+        guest.setName(guestName);
+//        guests.get(guests.indexOf(guest)).setName(guestName);
 
+        System.out.println("2. Enter the last name of the guest: ");
+        String guestLastName="guest";
+        guestLastName = inputS.nextLine();
+        guest.setLastName(guestLastName);
+//        guests.get(guests.indexOf(guest)).setName(guestLastName);
 
-        System.out.println("2. Enter Check in date: ");
-        String checkIDate = inputS.nextLine();
-        DateTimeFormatter formattedCheckIn = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-        LocalDateTime checkInDate = LocalDateTime.parse(checkIDate, formattedCheckIn);
-        reservation.setCheckInDate(checkInDate);
+        System.out.println("3. Enter the address of the guest: ");
+        String guestAddress="guest";
+        guestAddress = inputS.nextLine();
+        guest.setAddress(guestAddress);
+//        guests.get(guests.indexOf(guest)).setName(guestAddress);
 
-        System.out.println("3. Enter Check out date: ");
-        String checkODate = inputS.nextLine();
-        DateTimeFormatter formattedCheckOut = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
-        LocalDateTime checkOutDate = LocalDateTime.parse(checkODate, formattedCheckOut);
-        reservation.setCheckOutDate(checkOutDate);
+        System.out.println("4. Enter the phone number of the guest: ");
+        String guestTel="guest";
+        guestTel = inputS.nextLine();
+        guest.setTel(guestTel);
+//        guests.get(guests.indexOf(guest)).setName(guestTel);
 
+        System.out.println("5. Enter the email of the guest: ");
+        String guestEmail="guest";
+        guestEmail = inputS.nextLine();
+        guest.setEmail(guestEmail);
+//        guests.get(guests.indexOf(guest)).setName(guestEmail);
+        guests.add(guest);
 
-        System.out.println("4. Enter number of guests: ");
-        int numOfGuests = input.nextInt();
-        reservation.setNumOfGuests(numOfGuests);
+        //Listing just created guest
+        System.out.println("The guest " + guest.getName() + " is added to database" );
+        System.out.println("The last name of the guest: "+ guest.getLastName());
+        System.out.println("The address of the guest: "+ guest.getAddress());
+        System.out.println("The phone number of the guest: "+ guest.getTel());
+        System.out.println("The email of the guest: "+ guest.getEmail());
+
+    }
+
+    private static void showGuestList() {
+        //Listing all created guests
+        if (guests.size()>0) {
+            for (int i = 0; i < guests.size(); i++) {
+                System.out.println("The name of the guest: "+ guests.get(i).getName());
+                System.out.println("The last name of the guest: "+ guests.get(i).getLastName());
+                System.out.println("The address of the guest: "+ guests.get(i).getAddress());
+                System.out.println("The phone number of the guest: "+ guests.get(i).getTel());
+                System.out.println("The email of the guest: "+ guests.get(i).getEmail());
+            }
+        }
+        else {
+            System.out.println("There is no guest...");
+        }
     }
     private static void makeReservation() {
 
             System.out.println("MAKE A RESERVATION");
-
+            Guest guest=new Guest();
             System.out.println("1. Enter the name of the guest: ");
-            String guestName="guest";
-            guestName = inputS.nextLine();
-            reservation.setGuest(new Guest(guestName));
+            String guestName = inputS.nextLine();
+            guest.setName(guestName);
+
+            System.out.println("2. Enter the last name of the guest: ");
+            String guestLastName = inputS.nextLine();
+            guest.setLastName(guestLastName);
+            reservation.setGuest(guest);
 
 
-            System.out.println("2. Enter Check in date: ");
+            System.out.println("3. Enter Check in date: ");
             String checkIDate = inputS.nextLine();
             DateTimeFormatter formattedCheckIn = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
             LocalDateTime checkInDate = LocalDateTime.parse(checkIDate, formattedCheckIn);
             reservation.setCheckInDate(checkInDate);
 
-            System.out.println("3. Enter Check out date: ");
+            System.out.println("4. Enter Check out date: ");
             String checkODate = inputS.nextLine();
             DateTimeFormatter formattedCheckOut = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm");
             LocalDateTime checkOutDate = LocalDateTime.parse(checkODate, formattedCheckOut);
             reservation.setCheckOutDate(checkOutDate);
 
 
-            System.out.println("4. Enter number of guests: ");
+            System.out.println("5. Enter number of guests: ");
             int numOfGuests = input.nextInt();
             reservation.setNumOfGuests(numOfGuests);
 
 
-            System.out.println("5. Enter the room type (single, double, family, bride suite, standard, budget, luxury, lake side, mountain side): ");
+            System.out.println("6. Enter the room type (single, double, family, bride suite, standard, budget, luxury, lake side, mountain side): ");
             String roomType = inputS.nextLine();
 
 
@@ -131,16 +244,11 @@ public class Application {
                 System.out.println("There is no available room for your choice..");
             } else {
                 int reservedRoomNumber = reservation.getRoomsReserved().getRoomNumber();
-                System.out.println("The room " + reservedRoomNumber + " is reserved for " + reservation.getGuest().getName());
-                System.out.println(reservation.getCheckInDate());
-                System.out.println(reservation.getCheckOutDate());
-                System.out.println(reservation.getNumOfGuests());
-                System.out.println(reservation.getRoomsReserved().getRoomNumber());
-                System.out.println(reservation.getGuest().getName());
+                System.out.println("The room " + reservedRoomNumber + " is reserved for " + reservation.getGuest().getName()+ " "+ reservation.getGuest().getLastName());
+                System.out.println("Check In Date: "+ reservation.getCheckInDate());
+                System.out.println("Check Out Date: "+reservation.getCheckOutDate());
+                System.out.println("Number of Guests: "+ reservation.getNumOfGuests());
             }
-//                rooms.get(i).setCheckInTime(LocalDateTime.of(2020, 1,31, 14, 30));
-//                rooms.get(i).setCheckOutTime(LocalDateTime.of(2020, 2,4, 14, 30));
-//                rooms.get(i).setAvailable(false);
 
     }
     private static void createAllRooms(){
@@ -228,10 +336,8 @@ public class Application {
             System.out.println("The max beds: " + rooms.get(k).getMaxBeds());
             System.out.println("Is the room available: " + rooms.get(k).getAvailable());
             System.out.println("The room price: " + rooms.get(k).getRoomPrice());
-
-            System.out.println("285 rooms created..");
         }
-
+        System.out.println("285 rooms created..");
     }
 
 }
