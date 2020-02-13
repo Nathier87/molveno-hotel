@@ -1,12 +1,10 @@
 package com.capgemini.molveno.hotel;
 
 import com.capgemini.molveno.hotel.model.Guest;
+import com.capgemini.molveno.hotel.model.Payment_Detail;
 import com.capgemini.molveno.hotel.model.Reservation;
 import com.capgemini.molveno.hotel.model.Room;
 
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
@@ -19,6 +17,8 @@ public class Application {
     public static Scanner input = new Scanner(System.in);
     private static List<Room> rooms = new ArrayList<>();
     private static List<Guest> guests = new ArrayList<>();
+    private static List<Payment_Detail> payments = new ArrayList<>();
+    private static String Payment_Detail;
 
     public static void main(String[] args)  {
 //        createAllRooms();
@@ -49,6 +49,7 @@ public class Application {
             System.out.println("4. Show guest list");
             System.out.println("5. Create a room");
             System.out.println("6. Show room list");
+            System.out.println("7. Show payment");
 
             System.out.println("Choose your option number and press enter");
             int mainOption = input.nextInt();
@@ -78,6 +79,10 @@ public class Application {
                     showRoom();
                     showMenu();
                     break;
+                case 7://show a payment
+                    showPayments();
+                    showMenu();
+                    break;
                 default:
                     showMenu();
 
@@ -91,8 +96,32 @@ public class Application {
         }
     }
     private static void makePayment(){
-        System.out.println("under construction...");
+        Payment_Detail payment=new Payment_Detail();
+        System.out.println("1.Cart name:");
+        payment.setCardName(inputS.nextLine());
+
+        System.out.println("2.Cart No:");
+        payment.setCardNo(inputS.nextLine());
+
+        System.out.println("3.Bill Adress:");
+        payment.setBillAddress(inputS.nextLine());
+
+        System.out.println("4.Payment:");
+        payment.setCardExipry(inputS.nextLine());
+
+        payments.add(payment);
+
     }
+    private static void showPayments() {
+        for (int i=0;i<payments.size(); i++){
+            System.out.println("The Cart name:"+payments.get(i).getCardName());
+            System.out.println("The Cart No:"+payments.get(i).getCardNo());
+            System.out.println("The bill Adress:"+payments.get(i).getBillAddress());
+            System.out.println("Payment:"+payments.get(i).getCardExpiry());
+        }
+    }
+
+
     private static void createRoom() {
         Room room=new Room();
         System.out.println("CREATE A ROOM");
@@ -134,6 +163,7 @@ public class Application {
             System.out.println("Number of beds: "+ r.getMaxBeds());
             System.out.println("Room price: "+ r.getRoomPrice());
         }
+
     }
 
     private static void createGuest(){

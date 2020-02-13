@@ -8,7 +8,7 @@ import java.util.List;
 public class Reservation {
     private Guest guest;
     private Room roomsReserved;
-    private List<Payment> payments;
+//    private List<Payment> payments;
     private LocalDateTime checkInDate;
     private LocalDateTime checkOutDate;
     private int numOfGuests;
@@ -29,13 +29,13 @@ public class Reservation {
         this.roomsReserved= roomsReserved;
     }
 
-    public List<Payment> getPayments() {
-        return payments;
-    }
+//    public List<Payment> getPayments() {
+//        return payments;
+//    }
 
-    public void setPayments(List<Payment> payments) {
-        this.payments = payments;
-    }
+//    public void setPayments(List<Payment> payments) {
+//        this.payments = payments;
+//    }
 
     public LocalDateTime getCheckInDate() {
         return checkInDate;
